@@ -67,7 +67,7 @@ function Login() {
                                           <p className="text-muted">Sign in to continue</p>
                                       </div>
 
-                                      {state.failed ? <Alert color="danger">{state.failed}</Alert> : null}
+                                      {state.error ? <Alert color="danger">{state.error}</Alert> : null}
 
                                       <div className="p-2 mt-5">
                                           <AvForm className="form-horizontal"
