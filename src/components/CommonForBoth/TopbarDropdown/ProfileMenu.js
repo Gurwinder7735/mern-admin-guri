@@ -7,6 +7,7 @@ import { withNamespaces } from "react-i18next";
 // users
 import avatar2 from '../../../assets/images/users/avatar-2.jpg';
 import { getUser, logOut } from '../../../store/auth/actions';
+import { URL } from '../../..';
 
 class ProfileMenu extends Component {
 
@@ -39,7 +40,7 @@ class ProfileMenu extends Component {
             
                 <Dropdown isOpen={this.state.menu} toggle={this.toggle} className="d-inline-block user-dropdown">
                     <DropdownToggle tag="button" className="btn header-item waves-effect" id="page-header-user-dropdown">
-                        <img className="rounded-circle header-profile-user me-1" src={avatar2} alt="Header Avatar" />
+                        <img className="rounded-circle header-profile-user me-1" src={URL + getUser().profile} alt="Header Avatar" />
                         <span className="d-none d-xl-inline-block ms-1 text-transform">{getUser().email}</span>
                         <i className="mdi mdi-chevron-down d-none ms-1 d-xl-inline-block"></i>
                     </DropdownToggle>
