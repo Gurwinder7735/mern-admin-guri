@@ -20,6 +20,7 @@ import axios from "axios";
 
 //Firebase helper
 // import { initFirebaseBackend } from "./helpers/firebase_helper";
+import Toastr from './components/Toaster/index';
 
 // Activating fake backend
 // fakeBackend();
@@ -77,6 +78,8 @@ class App extends Component {
 		this.getLayout = this.getLayout.bind(this);
 	}
 
+
+
 	
 
 	/**
@@ -103,7 +106,10 @@ class App extends Component {
 		const Layout = this.getLayout();
 
 		return (
-			<React.Fragment>
+			<React.Fragment>	
+			{console.log('PROPS',this.props.user.success)}
+						{this.props.user.success && <Toastr type="success" message ={this.props.user.success} />}
+				 
 				<Router>
 					<Switch>
 						{publicRoutes.map((route, idx) => (
@@ -134,7 +140,8 @@ class App extends Component {
 
 const mapStateToProps = state => {
 	return {
-		layout: state.Layout
+		layout: state.Layout,
+		user: state.user
 	};
 };
 

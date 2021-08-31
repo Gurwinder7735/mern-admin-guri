@@ -3,12 +3,14 @@ import { authReducer } from './auth/reducer';
 
 import Layout from './layout/reducer';
 import { alertsReducer } from './alerts/reducer';
+import { userReducer } from './user/reducer';
 
 const rootReducer = combineReducers({
     // public
     Layout,
     auth: authReducer,
-    alert: alertsReducer
+    alert: alertsReducer,
+    user: userReducer
 
 });
 

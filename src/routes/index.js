@@ -15,11 +15,13 @@ import Dashboard from "../pages/Dashboard/index";
 import Login1 from "../pages/AuthenticationInner/Login";
 import Register1 from "../pages/AuthenticationInner/Register";
 import ForgetPwd1 from "../pages/AuthenticationInner/ForgetPassword";
+import AddUser from "../pages/Users/AddUser";
 
 const authProtectedRoutes = [
 
 	{ path: "/dashboard", component: Dashboard },
 	{ path: "/users", component: Dashboard },
+	{ path: "/addUser", component: AddUser },
 	{ path: "/categories", component: Dashboard },
 
 	// this route should be at the end of all other routes
@@ -30,7 +32,7 @@ const authProtectedRoutes = [
 const publicRoutes = [
 	{ path: "/logout", component: Logout },
 	{ path: "/login", component: Login },
-	{ path: "/forgot-password", component: ForgetPwd },
+
 	{ path: "/register", component: Register },
 	{ path: "/lock-screen", component: AuthLockScreen },
 
