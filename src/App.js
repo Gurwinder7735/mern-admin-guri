@@ -40,11 +40,11 @@ import Toastr from './components/Toaster/index';
 // initFirebaseBackend(firebaseConfig);
 // axios.defaults.headers.common["Authorization"] = token;
 
-axios.defaults.baseURL = 'https://mern-admin-test.herokuapp.com/';
-// axios.defaults.baseURL = 'http://localhost:5000/';
+// axios.defaults.baseURL = 'https://mern-admin-test.herokuapp.com/';
+axios.defaults.baseURL = 'http://localhost:5000/';
 
-axios.defaults.headers.post["Content-Type"] =
-    "application/x-www-form-urlencoded";
+// axios.defaults.headers.post["Content-Type"] =
+//     "application/x-www-form-urlencoded";
 
     axios.interceptors.request.use(request=> {
 		console.log(request);
@@ -109,6 +109,7 @@ class App extends Component {
 			<React.Fragment>	
 			{console.log('PROPS',this.props.user.success)}
 						{this.props.user.success && <Toastr type="success" message ={this.props.user.success} />}
+						{this.props.user.failed && <Toastr type="error" message ={this.props.user.failed} />}
 				 
 				<Router>
 					<Switch>
