@@ -1,22 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
-import { Row, Col, Input, Button, Alert, Container, Label } from "reactstrap";
+import { Row, Col, Button, Alert, Container, Label } from "reactstrap";
 
 // Redux
-import { connect, useDispatch, useSelector } from "react-redux";
-import { withRouter, Link, useHistory } from "react-router-dom";
+import {  useDispatch, useSelector } from "react-redux";
+import {  Link, useHistory } from "react-router-dom";
 
 // availity-reactstrap-validation
 import { AvForm, AvField } from "availity-reactstrap-validation";
 
 // actions
-import { checkLogin, apiError } from "../../store/actions";
+// import { checkLogin, apiError } from "../../store/actions";
 
 // import images
 import logodark from "../../assets/images/logo-dark.png";
 import logolight from "../../assets/images/logo-light.png";
 import { login } from "../../store/auth/actions";
-import axios from "axios";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import Loader from "react-loader-spinner";
 

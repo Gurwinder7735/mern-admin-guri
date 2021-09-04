@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Col, Card, CardBody } from "reactstrap";
 
 const MiniWidgets= ({reports}) => {

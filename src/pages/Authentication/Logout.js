@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
-import { connect } from 'react-redux';
+// import { withRouter } from 'react-router-dom';
+// import { connect } from 'react-redux';
 
-import { logoutUser } from '../../store/actions';
+// import { logoutUser } from '../../store/actions';
 import { logOut } from '../../store/auth/actions';
 
 class Logout extends Component {

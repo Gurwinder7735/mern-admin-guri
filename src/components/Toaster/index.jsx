@@ -17,7 +17,7 @@ const Toastr = ({type, message}) => {
       progress: undefined,
     });
 
-  }, []);
+  }, [type,message]);
 
   return (
     <ToastContainer

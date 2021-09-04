@@ -5,7 +5,7 @@ import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap
 import { withNamespaces } from "react-i18next";
 
 // users
-import avatar2 from '../../../assets/images/users/avatar-2.jpg';
+// import avatar2 from '../../../assets/images/users/avatar-2.jpg';
 import { getUser, logOut } from '../../../store/auth/actions';
 import { URL } from '../../..';
 
@@ -28,11 +28,11 @@ class ProfileMenu extends Component {
 
     render() {
      
-        let username = "Admin";
+        // let username = "Admin";
         if (localStorage.getItem("authUser")) {
-            const obj = JSON.parse(localStorage.getItem("authUser"));
-            const uNm = obj.email.split("@")[0];
-            username = uNm.charAt(0).toUpperCase() + uNm.slice(1);
+            // const obj = JSON.parse(localStorage.getItem("authUser"));
+            // const uNm = obj.email.split("@")[0];
+            // username = uNm.charAt(0).toUpperCase() + uNm.slice(1);
         }
 
         return (

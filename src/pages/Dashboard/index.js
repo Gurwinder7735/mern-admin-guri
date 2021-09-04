@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Container, Row, Col } from "reactstrap";
 
 //Import Breadcrumb
-import Breadcrumbs from "../../components/Common/Breadcrumb";
+// import Breadcrumbs from "../../components/Common/Breadcrumb";
 import MiniWidgets from "./MiniWidgets";
 
 const Dashboard = () => {
@@ -24,7 +24,7 @@ const Dashboard = () => {
  
   ];
 
-  const [reports, setReports] = useState(reportss);
+  const [reports] = useState(reportss);
 
   return (
     <React.Fragment>

@@ -5,12 +5,12 @@ import * as serviceWorker from './serviceWorker';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './store';
-import axios from 'axios';
+// import axios from 'axios';
 
 // axios.defaults.baseURL = 'https://mern-admin-test.herokuapp.com/';
 
-// export const URL = 'http://localhost:5000/Uploads/'
-export const URL = 'https://mern-admin-test.herokuapp.com/Uploads/'
+export const URL = 'http://localhost:5000/Uploads/'
+// export const URL = 'https://mern-admin-test.herokuapp.com/Uploads/'
 
 const app = (
     <Provider store={store}>

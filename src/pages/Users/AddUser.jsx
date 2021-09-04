@@ -26,7 +26,7 @@ const AddUser = () => {
   const handleChange = (e) => {
     console.log();
 
-    if (e.target.name == "image") {
+    if (e.target.name === "image") {
       setData((prev) => {
         return {
           ...prev,
@@ -136,7 +136,6 @@ const AddUser = () => {
                         <AvField
                           name="age"
                           placeholder="Age"
-                          type="text"
                           errorMessage="Enter Age"
                           type="number"
                           className="form-control"

@@ -5,22 +5,23 @@ import { Redirect } from "react-router-dom";
 import Login from "../pages/Authentication/Login";
 import Logout from "../pages/Authentication/Logout";
 import Register from "../pages/Authentication/Register";
-import ForgetPwd from "../pages/Authentication/ForgetPassword";
+// import ForgetPwd from "../pages/Authentication/ForgetPassword";
 import AuthLockScreen from "../pages/Authentication/AuthLockScreen";
 
 // Dashboard
 import Dashboard from "../pages/Dashboard/index";
 
 // Inner Authentication
-import Login1 from "../pages/AuthenticationInner/Login";
-import Register1 from "../pages/AuthenticationInner/Register";
-import ForgetPwd1 from "../pages/AuthenticationInner/ForgetPassword";
+// import Login1 from "../pages/AuthenticationInner/Login";
+// import Register1 from "../pages/AuthenticationInner/Register";
+// import ForgetPwd1 from "../pages/AuthenticationInner/ForgetPassword";
 import AddUser from "../pages/Users/AddUser";
+import Users from "../pages/Users/UserListing";
 
 const authProtectedRoutes = [
 
 	{ path: "/dashboard", component: Dashboard },
-	{ path: "/users", component: Dashboard },
+	{ path: "/users", component: Users },
 	{ path: "/addUser", component: AddUser },
 	{ path: "/categories", component: Dashboard },
 
