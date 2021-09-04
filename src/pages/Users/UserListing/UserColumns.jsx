@@ -2,6 +2,7 @@ import React from "react"
 import { Link } from "react-router-dom"
 import { Badge } from "reactstrap"
 import { URL } from "../../.."
+import Toggle from 'react-toggle'
 
 const UserColumns = () => [
   {
@@ -43,14 +44,16 @@ const UserColumns = () => [
     text: "Status",
     sort: true,
     formatter: (cell,row)=>(
-       <input type="checkbox" checked={row.status}></input>
+        <Toggle
+  defaultChecked={row.status}
+  aria-label='No label tag' />
     )
   },
   {
       dataField: "image",
       text: "Image",
       formatter: (cell, row) =>(
-          <img className="img-rounded" height={40} src={URL + row.image}></img>
+          <img className="rounded-circle" height={40} src={URL + row.image}></img>
       )
   },
 

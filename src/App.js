@@ -17,7 +17,7 @@ import "./assets/scss/theme.scss";
 import axios from "axios";
 
 import Toastr from './components/Toaster/index';
-
+import './App.css'
 
 // axios.defaults.headers.common["Authorization"] = token;
 
