@@ -80,32 +80,38 @@ class SidebarContent extends Component {
         <div id="sidebar-menu">
           <ul className="metismenu list-unstyled" id="side-menu">
             <li className="menu-title">{this.props.t("Menu")}</li>
-            {/* 
-                        <li>
-                            <Link to="/dashboard" className="waves-effect">
-                                <i className="ri-dashboard-line"></i><span className="badge rounded-pill bg-success float-end">3</span>
-                                <span className="ms-1">{this.props.t('Dashboard')}</span>
-                            </Link>
-                        </li> */}
 
             <li>
+              <Link to="/dashboard" className="waves-effect">
+                <i className="ri-dashboard-line"></i>
+                <span className="badge rounded-pill bg-success float-end"></span>
+                <span className="ms-1">{this.props.t("Dashboard")}</span>
+              </Link>
+            </li>
 
+
+            <li>
+              <Link to="/users" className="waves-effect">
+                <i className="ri-dashboard-line"></i>
+                <span className="badge rounded-pill bg-success float-end"></span>
+                <span className="ms-1">{this.props.t("Users")}</span>
+              </Link>
+            </li>
+
+            {/* <li>
               <Link to="/#" className="has-arrow waves-effect">
                 <i className="ri-store-2-line"></i>
                 <span className="ms-1">{this.props.t("Users")}</span>
               </Link>
               <ul className="sub-menu">
-       
-                 <li>
+                <li>
                   <Link to="/addUser">{this.props.t("Add")}</Link>
                 </li>
                 <li>
                   <Link to="/users">{this.props.t("Listing")}</Link>
                 </li>
-                
-         
               </ul>
-            </li>
+            </li> */}
           </ul>
         </div>
       </React.Fragment>

@@ -4,6 +4,7 @@ const initialState = {
   loading: false,
   success: false,
   failed: false,
+  users: [],
 };
 
 export const userReducer = (state = initialState, action) => {
@@ -32,7 +33,22 @@ export const userReducer = (state = initialState, action) => {
         failed: action.payload,
       };
 
-    default: 
-    return state
+    case actionType.SET_USERS:
+      return {
+        ...state,
+        users: action.payload,
+      };
+
+    case actionType.CLEAR_USER:
+      return {
+        ...state,
+        loading: false,
+        success: false,
+        failed: false
+
+      };
+
+    default:
+      return state;
   }
 };

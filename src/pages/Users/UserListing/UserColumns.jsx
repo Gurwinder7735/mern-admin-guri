@@ -6,6 +6,24 @@ import Toggle from 'react-toggle'
 
 const UserColumns = () => [
   {
+    text: "#",
+    dataField: "_id",  
+    sort: true,
+    hidden: false,
+    formatter: (cellContent, row,id) => (
+      <>
+       {row._id}
+      </>
+    ),
+  },
+  {
+    dataField: "image",
+    text: "Image",
+    formatter: (cell, row) =>(
+        <img className="rounded-circle" height={40} src={URL + 'user.png'}></img>
+    )
+},
+  {
     text: "id",
     dataField: "id",
     sort: true,
@@ -49,13 +67,7 @@ const UserColumns = () => [
   aria-label='No label tag' />
     )
   },
-  {
-      dataField: "image",
-      text: "Image",
-      formatter: (cell, row) =>(
-          <img className="rounded-circle" height={40} src={URL + row.image}></img>
-      )
-  },
+ 
 
 //   {
 //     dataField: "invoice",

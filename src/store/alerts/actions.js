@@ -14,7 +14,6 @@ export const setSuccess = (data) => ({
     payload: data
 });
 
-export const clear = (data) => ({
+export const clearAlerts = () => ({
     type: actionType.CLEAR,
-    payload: data
 });

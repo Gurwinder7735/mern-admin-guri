@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Row, Col, Card, CardBody, Button, Label,Container } from "reactstrap";
 import {
   AvForm,
@@ -8,7 +8,6 @@ import {
 } from "availity-reactstrap-validation";
 import { useDispatch, useSelector } from "react-redux";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
-import Loader from "react-loader-spinner";
 import BootstrapTable from "react-bootstrap-table-next"
 import paginationFactory, {
   PaginationProvider,
@@ -16,10 +15,28 @@ import paginationFactory, {
 } from "react-bootstrap-table2-paginator"
 import ToolkitProvider, { Search } from "react-bootstrap-table2-toolkit"
 import UserColumns from "./UserColumns";
+import {Link} from 'react-router-dom'
+import { getUsers } from "../../../store/user/actions";
+import AddUser from "../AddUser";
+import Loader from "react-loader-spinner";
 
-
+const NoDataIndication = () => (
+  <>
+   <div style = {{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh - 50px'}}>
+         <Loader
+        type="ThreeDots"
+        color="#5664D2"
+        height={100}
+        width={100}
+      />
+    </div>
+    </>
+)
 
 const Users = () => {
+
+  const [modal, setModal] = useState(false);
+  const toggle = () => setModal(!modal);
 
   const dispatch = useDispatch();
   const state = useSelector((state) => state.user);
@@ -32,454 +49,19 @@ const Users = () => {
 
   const { SearchBar } = Search;
 
-  const users = [
-    {
-      id: '1',
-      name: 'Gurwinder',
-      email: 'guri8',
-      gender: 'Male',
-      age: '21',
-      image: 'user.png',
-      status: true
+  const users = state.users
 
-    },
-    {
-      id: '1',
-      name: 'Gurwinder',
-      email: 'guri8',
-      gender: 'Male',
-      age: '21'
+  useEffect(()=>{
 
-    },
-    {
-      id: '1',
-      name: 'Gurwinder',
-      email: 'guri8',
-      gender: 'Male',
-      age: '21'
+    dispatch(getUsers())
 
-    },
-    {
-      id: '1',
-      name: 'Gurwinder',
-      email: 'guri8',
-      gender: 'Male',
-      age: '21'
+  },[])
 
-    },
-    {
-      id: '1',
-      name: 'Gurwinder',
-      email: 'guri8',
-      gender: 'Male',
-      age: '21'
 
-    },
-    {
-      id: '1',
-      name: 'Gurwinder',
-      email: 'guri8',
-      gender: 'Male',
-      age: '21'
-
-    },
-    {
-      id: '1',
-      name: 'Gurwinder',
-      email: 'guri8',
-      gender: 'Male',
-      age: '21'
-
-    },
-    {
-      id: '1',
-      name: 'Gurwinder',
-      email: 'guri8',
-      gender: 'Male',
-      age: '21'
-
-    },
-    {
-      id: '1',
-      name: 'Gurwinder',
-      email: 'guri8',
-      gender: 'Male',
-      age: '21'
-
-    },
-    {
-      id: '1',
-      name: 'Gurwinder',
-      email: 'guri8',
-      gender: 'Male',
-      age: '21'
-
-    },  {
-      id: '1',
-      name: 'Gurwinder',
-      email: 'guri8',
-      gender: 'Male',
-      age: '21'
-
-    },
-    {
-      id: '1',
-      name: 'Gurwinder',
-      email: 'guri8',
-      gender: 'Male',
-      age: '21'
-
-    },
-    {
-      id: '1',
-      name: 'Gurwinder',
-      email: 'guri8',
-      gender: 'Male',
-      age: '21'
-
-    },
-
-    {
-      id: '1',
-      name: 'Gurwinder',
-      email: 'guri8',
-      gender: 'Male',
-      age: '21'
-
-    },
-    {
-      id: '1',
-      name: 'Gurwinder',
-      email: 'guri8',
-      gender: 'Male',
-      age: '21'
-
-    },
-    {
-      id: '1',
-      name: 'Gurwinder',
-      email: 'guri8',
-      gender: 'Male',
-      age: '21'
-
-    },
-    {
-      id: '1',
-      name: 'Gurwinder',
-      email: 'guri8',
-      gender: 'Male',
-      age: '21'
-
-    },
-    {
-      id: '1',
-      name: 'Jatin',
-      email: 'guri8',
-      gender: 'Male',
-      age: '21'
-
-    },
-    {
-      id: '1',
-      name: 'Nihal',
-      email: 'guri8',
-      gender: 'Male',
-      age: '21'
-
-    },
-    {
-      id: '1',
-      name: 'Gurwinder',
-      email: 'guri8',
-      gender: 'Male',
-      age: '21'
-
-    },
-    {
-      id: '1',
-      name: 'Gurwinder',
-      email: 'guri8',
-      gender: 'Male',
-      age: '21'
-
-    },
-    {
-      id: '1',
-      name: 'Gurwinder',
-      email: 'guri8',
-      gender: 'Male',
-      age: '21'
-
-    },  {
-      id: '1',
-      name: 'Gurwinder',
-      email: 'guri8',
-      gender: 'Male',
-      age: '21'
-
-    },
-    {
-      id: '1',
-      name: 'Gurwinder',
-      email: 'guri8',
-      gender: 'Male',
-      age: '21'
-
-    },
-    {
-      id: '1',
-      name: 'Gurwinder',
-      email: 'guri8',
-      gender: 'Male',
-      age: '21'
-
-    },
-
-    {
-      id: '1',
-      name: 'Gurwinder',
-      email: 'guri8',
-      gender: 'Male',
-      age: '21'
-
-    },
-    {
-      id: '1',
-      name: 'Gurwinder',
-      email: 'guri8',
-      gender: 'Male',
-      age: '21'
-
-    },
-    {
-      id: '1',
-      name: 'Gurwinder',
-      email: 'guri8',
-      gender: 'Male',
-      age: '21'
-
-    },
-    {
-      id: '1',
-      name: 'Gurwinder',
-      email: 'guri8',
-      gender: 'Male',
-      age: '21'
-
-    },
-    {
-      id: '1',
-      name: 'Jatin',
-      email: 'guri8',
-      gender: 'Male',
-      age: '21'
-
-    },
-    {
-      id: '1',
-      name: 'Nihal',
-      email: 'guri8',
-      gender: 'Male',
-      age: '21'
-
-    },
-     {
-      id: '1',
-      name: 'Gurwinder',
-      email: 'guri8',
-      gender: 'Male',
-      age: '21'
-
-    },
-    {
-      id: '1',
-      name: 'Gurwinder',
-      email: 'guri8',
-      gender: 'Male',
-      age: '21'
-
-    },
-    {
-      id: '1',
-      name: 'Gurwinder',
-      email: 'guri8',
-      gender: 'Male',
-      age: '21'
-
-    },  {
-      id: '1',
-      name: 'Gurwinder',
-      email: 'guri8',
-      gender: 'Male',
-      age: '21'
-
-    },
-    {
-      id: '1',
-      name: 'Gurwinder',
-      email: 'guri8',
-      gender: 'Male',
-      age: '21'
-
-    },
-    {
-      id: '1',
-      name: 'Gurwinder',
-      email: 'guri8',
-      gender: 'Male',
-      age: '21'
-
-    },
-
-    {
-      id: '1',
-      name: 'Gurwinder',
-      email: 'guri8',
-      gender: 'Male',
-      age: '21'
-
-    },
-    {
-      id: '1',
-      name: 'Gurwinder',
-      email: 'guri8',
-      gender: 'Male',
-      age: '21'
-
-    },
-    {
-      id: '1',
-      name: 'Gurwinder',
-      email: 'guri8',
-      gender: 'Male',
-      age: '21'
-
-    },
-    {
-      id: '1',
-      name: 'Gurwinder',
-      email: 'guri8',
-      gender: 'Male',
-      age: '21'
-
-    },
-    {
-      id: '1',
-      name: 'Jatin',
-      email: 'guri8',
-      gender: 'Male',
-      age: '21'
-
-    },
-    {
-      id: '1',
-      name: 'Nihal',
-      email: 'guri8',
-      gender: 'Male',
-      age: '21'
-
-    },
-    {
-      id: '1',
-      name: 'Gurwinder',
-      email: 'guri8',
-      gender: 'Male',
-      age: '21'
-
-    },
-    {
-      id: '1',
-      name: 'Gurwinder',
-      email: 'guri8',
-      gender: 'Male',
-      age: '21'
-
-    },
-    {
-      id: '1',
-      name: 'Gurwinder',
-      email: 'guri8',
-      gender: 'Male',
-      age: '21'
-
-    },  {
-      id: '1',
-      name: 'Gurwinder',
-      email: 'guri8',
-      gender: 'Male',
-      age: '21'
-
-    },
-    {
-      id: '1',
-      name: 'Gurwinder',
-      email: 'guri8',
-      gender: 'Male',
-      age: '21'
-
-    },
-    {
-      id: '1',
-      name: 'Gurwinder',
-      email: 'guri8',
-      gender: 'Male',
-      age: '21'
-
-    },
-
-    {
-      id: '1',
-      name: 'Gurwinder',
-      email: 'guri8',
-      gender: 'Male',
-      age: '21'
-
-    },
-    {
-      id: '1',
-      name: 'Gurwinder',
-      email: 'guri8',
-      gender: 'Male',
-      age: '21'
-
-    },
-    {
-      id: '1',
-      name: 'Gurwinder',
-      email: 'guri8',
-      gender: 'Male',
-      age: '21'
-
-    },
-    {
-      id: '1',
-      name: 'Gurwinder',
-      email: 'guri8',
-      gender: 'Male',
-      age: '21'
-
-    },
-    {
-      id: '1',
-      name: 'Jatin',
-      email: 'guri8',
-      gender: 'Male',
-      age: '21'
-
-    },
-    {
-      id: '1',
-      name: 'Nihal',
-      email: 'guri8',
-      gender: 'Male',
-      age: '21'
-
-    },
-
-  ]
 
   return (
     <>
+    <AddUser modal={modal} toggle={toggle}/>
         <div className="page-content">
           
           <Container fluid>
@@ -517,15 +99,20 @@ const Users = () => {
                                 </Col>
                                 <Col sm="8">
                                   <div className="text-sm-end">
-                                    <Button
+                                   
+                                      {/* <Link to="addUser"> */}
+                                      <Button
                                       type="button"
                                       color="success"
                                       className="btn-rounded mb-2 me-2"
-                                      // onClick={this.handleOrderClicks}
+                                      onClick={toggle}
                                     >
                                       <i className="mdi mdi-plus me-1" />{" "}
                                       Add New User
-                                    </Button>
+                                      </Button>
+                                      {/* </Link> */}
+                                     
+                                   
                                   </div>
                                 </Col>
                               </Row>
@@ -536,13 +123,15 @@ const Users = () => {
                                   {...paginationTableProps}
                                   responsive
                                   bordered={false}
-                                  striped={false}
+                                  striped={true}
                                   // defaultSorted={defaultSorted}
                                   // selectRow={selectRow}
                                   classes={
                                     "table align-middle table-nowrap table-check"
                                   }
                                   headerWrapperClasses={"table-light"}
+                                  noDataIndication={ () =>  <NoDataIndication/>}
+                                  
                                 />
                                 
                               </div>

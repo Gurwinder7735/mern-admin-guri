@@ -10,6 +10,12 @@ export const alertsReducer = (state = initialState, action) => {
     
   switch (action.type) {
 
+    case actionType.LOADING:
+      return {
+        ...state,
+        loading: !state.loading
+      };
+
     case actionType.SUCCESS:
       return {
         ...state,
@@ -31,6 +37,7 @@ export const alertsReducer = (state = initialState, action) => {
         success: "",
         loading: ""
       };
+
 
     default:
       return state;
