@@ -26,7 +26,7 @@ axios.defaults.baseURL = 'https://mern-admin-test.herokuapp.com/';
 
 // axios.defaults.headers.post["Content-Type"] =
 //     "application/x-www-form-urlencoded";
-
+// test
     axios.interceptors.request.use(request=> {
 		console.log(request);
       // Do something before request is sent
