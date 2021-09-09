@@ -13,7 +13,9 @@ export const alertsReducer = (state = initialState, action) => {
     case actionType.LOADING:
       return {
         ...state,
-        loading: !state.loading
+        loading: action.payload,
+        error: '',
+        success: ''
       };
 
     case actionType.SUCCESS:
@@ -21,6 +23,7 @@ export const alertsReducer = (state = initialState, action) => {
         ...state,
         success: action.payload,
         error: "",
+        loading: ""
       };
 
     case actionType.ERROR:
@@ -28,6 +31,7 @@ export const alertsReducer = (state = initialState, action) => {
         ...state,
         error: action.payload,
         success: "",
+        loading: "false"
       };
 
       case actionType.CLEAR:

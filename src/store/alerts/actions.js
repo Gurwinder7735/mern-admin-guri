@@ -1,7 +1,8 @@
 import * as actionType from "./actionTypes";
 
-export const setLoading = () => ({
-    type: actionType.LOADING
+export const setLoading = (data) => ({
+    type: actionType.LOADING,
+    payload: data
 });
 
 export const setError = (data) => ({

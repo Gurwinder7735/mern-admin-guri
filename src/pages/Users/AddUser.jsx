@@ -272,8 +272,20 @@ const AddUser = ({toggle, modal})=>{
     formData.append("gender", data.gender);
     formData.append("age", data.age);
     formData.append("image", data.image);
-    dispatch(addUser(formData,history));
+    dispatch(addUser(formData,history,clearInputs,toggle));
   };
+
+  const clearInputs = ()=>{
+
+    setData({
+      name: '',
+      email: '',
+      gender: '',
+      age: '',
+      image: ''
+    })
+
+  }
 
 
 

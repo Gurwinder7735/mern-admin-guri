@@ -42,7 +42,7 @@ axios.defaults.baseURL = 'https://mern-admin-test.herokuapp.com/';
     axios.interceptors.response.use(response=> {
       // Any status code that lie within the range of 2xx cause this function to trigger
       // Do something with response data
-	 console.log(response)
+	//  console.log(response)
       return response;
     }, function (error) {
 		console.log('ERROR',error);
@@ -53,6 +53,8 @@ axios.defaults.baseURL = 'https://mern-admin-test.herokuapp.com/';
 
   
 class App extends Component {
+
+
 	constructor(props) {
 		super(props);
 		this.state = {};
@@ -91,6 +93,8 @@ class App extends Component {
 			{console.log('PROPS',this.props.user.success)}
 						{this.props.user.success && <Toastr type="success" message ={this.props.user.success} />}
 						{this.props.user.failed && <Toastr type="error" message ={this.props.user.failed} />}
+						{this.props.alert.success && <Toastr type="success" message ={this.props.alert.success} />}
+						{this.props.alert.error && <Toastr type="error" message ={this.props.alert.error} />}
 				 
 				<Router>
 					<Switch>
@@ -123,7 +127,8 @@ class App extends Component {
 const mapStateToProps = state => {
 	return {
 		layout: state.Layout,
-		user: state.user
+		user: state.user,
+		alert: state.alert,
 	};
 };
 

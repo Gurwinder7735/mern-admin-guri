@@ -93,10 +93,10 @@ const UserColumns = (handleChangeStatus, handleDeleteUser) => {
     dataField: "action",
     isDummyField: true,
     text: "Action",
-    formatter: (cellContent) => (
+    formatter: (cellContent,row) => (
       <React.Fragment>
         <Link to="#" className="me-3 text-primary"><i className="mdi mdi-pencil font-size-18"></i></Link>
-        <Link to="#" className="text-danger"><i className="mdi mdi-trash-can font-size-18"></i></Link>
+        <Link onClick={()=> handleDeleteUser(row._id)} className="text-danger"><i className="mdi mdi-trash-can font-size-18"></i></Link>
       </React.Fragment>
     ),
   },
