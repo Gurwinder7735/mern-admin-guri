@@ -16,7 +16,7 @@ import paginationFactory, {
 import ToolkitProvider, { Search } from "react-bootstrap-table2-toolkit"
 import UserColumns from "./UserColumns";
 import {Link} from 'react-router-dom'
-import { getUsers } from "../../../store/user/actions";
+import { changeUserStatus, getUsers } from "../../../store/user/actions";
 import AddUser from "../AddUser";
 import Loader from "react-loader-spinner";
 
@@ -43,14 +43,23 @@ const Users = () => {
 
   const pageOptions = {
     sizePerPage: 10,
-    totalSize: 15, // replace later with size(Order),
+    totalSize: 1, // replace later with size(Order),
     custom: true,
   }
 
   const { SearchBar } = Search;
 
-  const users = state.users
+  const users = state.users;
 
+  const handleChangeStatus = (id,status)=>{
+
+    console.log('ID',id);
+    console.log('HANDLE CHANGE STATUS',status);
+    dispatch(changeUserStatus(id,status))
+  
+
+  }
+   
   useEffect(()=>{
 
     dispatch(getUsers())
@@ -78,7 +87,7 @@ const Users = () => {
                         <ToolkitProvider
                           keyField="id"
                           data={users}
-                          columns={UserColumns()}
+                          columns={UserColumns(handleChangeStatus)}
                           bootstrap4
                           search
                         >

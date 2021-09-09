@@ -3,11 +3,16 @@ import { Link } from "react-router-dom"
 import { Badge } from "reactstrap"
 import { URL } from "../../.."
 import Toggle from 'react-toggle'
+// import { changeUserStatus } from "../../../store/user/actions"
+import { useDispatch } from "react-redux"
 
-const UserColumns = () => [
+const UserColumns = (handleChangeStatus, handleDeleteUser) => {
+  
+
+  return [
   {
     text: "#",
-    dataField: "_id",  
+    dataField: "_id",     
     sort: true,
     hidden: false,
     formatter: (cellContent, row,id) => (
@@ -62,9 +67,14 @@ const UserColumns = () => [
     text: "Status",
     sort: true,
     formatter: (cell,row)=>(
+      <>
+      {console.log('ROW',row)}
         <Toggle
-  defaultChecked={row.status}
-  aria-label='No label tag' />
+           defaultChecked={row.status}
+            aria-label='No label tag'
+            onChange={(e) => handleChangeStatus(row._id, e.target.checked)}
+        />
+        </>
     )
   },
  
@@ -90,6 +100,6 @@ const UserColumns = () => [
       </React.Fragment>
     ),
   },
-]
+]}
 
 export default UserColumns

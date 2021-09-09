@@ -1,6 +1,6 @@
 import * as actionType from "./actionTypes";
 import axios from 'axios'
-import { setError, setLoading } from "../alerts/actions";
+import { setError, setLoading, setSuccess } from "../alerts/actions";
 
 const addUserStart = () => ({
   type: actionType.ADD_USER_START,
@@ -69,3 +69,44 @@ return (dispatch) => {
     });
 };
 };
+
+export const changeUserStatus = (id,status) => {
+  console.log(status);
+  const fd = new FormData();
+  fd.append('status',status)
+return (dispatch) => {
+
+  axios
+    .patch(`api/user/${id}`, fd)
+    .then((res) => {
+      dispatch(setSuccess(res.data.message));
+      
+      console.log("RES", res);
+      dispatch(getUsers())
+    })
+    .catch((err) => {
+      dispatch(setError(err.response.data.message));
+      console.log(err);
+    });
+};
+};
+
+export const deleteUser = (id) => {
+
+return (dispatch) => {
+
+  axios
+    .delete(`api/user/${id}`)
+    .then((res) => {
+      dispatch(setSuccess(res.data.message));
+      
+      console.log("RES", res);
+      dispatch(getUsers())
+    })
+    .catch((err) => {
+      dispatch(setError(err.response.data.message));
+      console.log(err);
+    });
+};
+};
+
