@@ -22,7 +22,7 @@ const Dashboard = () => {
       desc: "From previous period",
     },
  
-  ];
+  ];       
 
   const [reports] = useState(reportss);
 

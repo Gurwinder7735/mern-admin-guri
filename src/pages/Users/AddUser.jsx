@@ -91,6 +91,7 @@ const AddUser = ({ modal, modalType }) => {
     formData.append("email", data.email);
     formData.append("gender", data.gender);
     formData.append("age", data.age);
+    
     if(data.image){
       formData.append("image", data.image);
     }
