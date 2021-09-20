@@ -30,20 +30,6 @@ const setUsers = (data) => ({
   payload: data,
 });
 
-export const setUser = (data) => ({
-  type: actionType.SET_USER,
-  payload: data,
-});
-
-export const setModalType = (data) => ({
-  type: actionType.SET_MODAL_TYPE,
-  payload: data
-})
-
-export const toggleModal = () => ({
-  type: actionType.TOGGLE_MODAL,
-})
-
 export const addUser = (data, history, clearInputs, toggle) => {
   console.log(data);
   return (dispatch) => {
@@ -54,38 +40,11 @@ export const addUser = (data, history, clearInputs, toggle) => {
       .post("api/user", data)
       .then((res) => {
         dispatch(addUserSuccess(res.data.message));
-        clearInputs()
-        dispatch(toggleModal());
-    
-        
+        clearInputs();
+        toggle();
         console.log("RES", res);
         dispatch(getUsers());
         history.push("users");
-      })
-      .catch((err) => {
-        dispatch(addUserFailed(err.response.data.message));
-        console.log(err);
-      });
-  };
-};
-
-export const updateUser = (id,data, clearInputs) => {
-  console.log(data);
-  return (dispatch) => {
-    dispatch(clearAlerts());
-    dispatch(addUserStart());
-
-    axios
-      .patch(`api/user/${id}`, data)
-      .then((res) => {
-        dispatch(addUserSuccess(res.data.message));
-        clearInputs()
-        dispatch(toggleModal());
-    
-        
-        console.log("RES", res);
-        dispatch(getUsers());
-        // history.push("users");
       })
       .catch((err) => {
         dispatch(addUserFailed(err.response.data.message));

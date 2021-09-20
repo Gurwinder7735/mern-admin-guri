@@ -17,20 +17,16 @@ import {
   AvRadioGroup,
   AvRadio,
 } from "availity-reactstrap-validation";
-import { addUser, clearUser, setModalType, toggleModal, updateUser } from "../../store/user/actions";
+import { addUser, clearUser } from "../../store/user/actions";
 import { useDispatch, useSelector } from "react-redux";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import Loader from "react-loader-spinner";
 import { useHistory } from "react-router";
 
-const AddUser = ({ modal, modalType }) => {
-
+const AddUser = ({ toggle, modal }) => {
   const dispatch = useDispatch();
   const state = useSelector((state) => state.user);
   let history = useHistory();
-  
-  // let user = 
-  
 
   const [data, setData] = useState({
     name: "",
@@ -40,16 +36,6 @@ const AddUser = ({ modal, modalType }) => {
     image: "",
   });
 
-  useEffect(() => {
-    setData({
-      name: state.user.name,
-      email: state.user.email,
-      age: state.user.age,
-      gender: state.user.gender
-    })
-  }, [state.user])
-
- 
   const handleChange = (e) => {
     console.log();
 
@@ -79,25 +65,8 @@ const AddUser = ({ modal, modalType }) => {
     formData.append("gender", data.gender);
     formData.append("age", data.age);
     formData.append("image", data.image);
-    dispatch(addUser(formData, history, clearInputs));
+    dispatch(addUser(formData, history, clearInputs, toggle));
   };
-
-  const handleUpdate = () => {
-
-    let formData = new FormData();
-    console.log(state.user._id);
-    // alert(state.user.user_id)
-    formData.append("name", data.name);
-    formData.append("email", data.email);
-    formData.append("gender", data.gender);
-    formData.append("age", data.age);
-    
-    if(data.image){
-      formData.append("image", data.image);
-    }
-    dispatch(updateUser(state.user._id,formData, clearInputs));
-    
-  }
 
   const clearInputs = () => {
     setData({
@@ -111,17 +80,16 @@ const AddUser = ({ modal, modalType }) => {
 
   return (
     <div>
-      <Modal isOpen={state.isModalOpen} scrollable={true}>
-        <ModalHeader toggle={()=> dispatch(toggleModal())}>Add User</ModalHeader>
+      <Modal isOpen={modal} toggle={toggle} scrollable={true}>
+        <ModalHeader toggle={toggle}>Add User</ModalHeader>
         <ModalBody>
           <div className="pae-content">
             <Row>
               <Col md={{ size: 12 }}>
                 <AvForm
                   className="needs-validation"
-                  onValidSubmit={state.modalType != 'edit'? handleSubmit : handleUpdate}              
-                > 
-                  
+                  onValidSubmit={handleSubmit}
+                >
                   <Row>
                     <Col>
                       <div className="mb-3">
@@ -264,15 +232,10 @@ const AddUser = ({ modal, modalType }) => {
                           width={48}
                         />
                       ) : (
-                        state.modalType == 'edit'? 'Update': 'Submit'
-                      
+                        "Submit"
                       )}
                     </Button>
-                    <Button color="secondary" onClick={() =>{ 
-                      dispatch(toggleModal())
-                      dispatch(setModalType(''))                        
-                      clearInputs()
-                      }}>
+                    <Button color="secondary" onClick={toggle}>
                       Cancel
                     </Button>
                   </ModalFooter>

@@ -6,7 +6,7 @@ import Toggle from 'react-toggle'
 // import { changeUserStatus } from "../../../store/user/actions"
 import { useDispatch } from "react-redux"
 
-const UserColumns = (handleChangeStatus, handleDeleteUser, editUserPopup) => {
+const UserColumns = (handleChangeStatus, handleDeleteUser) => {
   
 
   return [
@@ -95,7 +95,7 @@ const UserColumns = (handleChangeStatus, handleDeleteUser, editUserPopup) => {
     text: "Action",
     formatter: (cellContent,row) => (
       <React.Fragment>
-        <Link onClick={()=> editUserPopup(row._id)} className="me-3 text-primary"><i className="mdi mdi-pencil font-size-18"></i></Link>
+        <Link to="#" className="me-3 text-primary"><i className="mdi mdi-pencil font-size-18"></i></Link>
         <Link onClick={()=> handleDeleteUser(row._id)} className="text-danger"><i className="mdi mdi-trash-can font-size-18"></i></Link>
       </React.Fragment>
     ),

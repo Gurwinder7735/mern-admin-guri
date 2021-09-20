@@ -89,7 +89,7 @@ class App extends Component {
 		const Layout = this.getLayout();
 
 		return (
-			<>	
+			<React.Fragment>	
 			{console.log('PROPS',this.props.user.success)}
 						{this.props.user.success && <Toastr type="success" message ={this.props.user.success} />}
 						{this.props.user.failed && <Toastr type="error" message ={this.props.user.failed} />}
@@ -119,7 +119,7 @@ class App extends Component {
 						))}
 					</Switch>
 				</Router>
-			</>
+			</React.Fragment>
 		);
 	}
 }

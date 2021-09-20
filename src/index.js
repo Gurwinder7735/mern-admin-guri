@@ -14,7 +14,8 @@ export const URL = 'https://mern-admin-test.herokuapp.com/Uploads/'
 
 const app = (
     <Provider store={store}>
-        <BrowserRouter>   
+        <BrowserRouter>
+        
             <App />
         </BrowserRouter>
     </Provider>
