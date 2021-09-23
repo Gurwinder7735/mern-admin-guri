@@ -13,8 +13,8 @@ import { AvForm, AvField } from "availity-reactstrap-validation";
 // import { checkLogin, apiError } from "../../store/actions";
 
 // import images
-import logodark from "../../assets/images/logo-dark.png";
-import logolight from "../../assets/images/logo-light.png";
+import logodark from "../../assets/images/logo.jpg";
+import logolight from "../../assets/images/logo.jpg";
 import { login } from "../../store/auth/actions";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import Loader from "react-loader-spinner";
@@ -57,8 +57,8 @@ function Login() {
                                       <div className="text-center">
                                       <div>
                                           <Link to="/" class="">
-                                              <img src={logodark} alt="" height="20" class="auth-logo logo-dark mx-auto" />
-                                              <img src={logolight} alt="" height="20" class="auth-logo logo-light mx-auto" />
+                                              <img src={logodark} alt="" height="80" class="auth-logo logo-dark mx-auto" />
+                                              <img src={logolight} alt="" height="80" class="auth-logo logo-light mx-auto" />
                                           </Link>
                                       </div>
 

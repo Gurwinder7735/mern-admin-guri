@@ -23,10 +23,10 @@ import { withNamespaces } from "react-i18next";
 import { toggleRightSidebar } from "../../store/actions";
 
 //Import logo Images
-import logosmdark from "../../assets/images/logo-sm-dark.png";
-import logodark from "../../assets/images/logo-dark.png";
-import logosmlight from "../../assets/images/logo-sm-light.png";
-import logolight from "../../assets/images/logo-light.png";
+import logosmdark from "../../assets/images/logo.jpg";
+import logodark from "../../assets/images/logo.jpg";
+import logosmlight from "../../assets/images/logo.jpg";
+import logolight from "../../assets/images/logo.jpg";
 
 //Import Social Profile Images
 // import github from "../../assets/images/brands/github.png";
@@ -99,7 +99,7 @@ class Header extends Component {
                     <div className="navbar-header">
                         <div className="d-flex">
 
-                            <div className="navbar-brand-box">
+                            <div className="navbar-brand-box" style={{background: '#fff'}}>
                                 <Link to="#" className="logo logo-dark">
                                     <span className="logo-sm">
                                         <img src={logosmdark} alt="" height="22" />
@@ -111,10 +111,10 @@ class Header extends Component {
 
                                 <Link to="#" className="logo logo-light">
                                     <span className="logo-sm">
-                                        <img src={logosmlight} alt="" height="22" />
+                                        <img src={logosmlight} alt="" height="52" />
                                     </span>
                                     <span className="logo-lg">
-                                        <img src={logolight} alt="" height="20" />
+                                        <img src={logolight} alt="" height="70" />
                                     </span>
                                 </Link>
                             </div>

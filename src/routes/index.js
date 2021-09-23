@@ -18,6 +18,7 @@ import Dashboard from "../pages/Dashboard/index";
 import AddUser from "../pages/Users/AddUser";
 import Users from "../pages/Users/UserListing";
 
+
 const authProtectedRoutes = [
 
 	{ path: "/dashboard", component: Dashboard },

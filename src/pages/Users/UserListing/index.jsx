@@ -20,6 +20,9 @@ import {
   changeUserStatus,
   deleteUser,
   getUsers,
+  toggleModal,
+  setModalType,
+  setUser
 } from "../../../store/user/actions";
 import AddUser from "../AddUser";
 import Loader from "react-loader-spinner";
@@ -41,11 +44,13 @@ const NoDataIndication = () => (
 );
 
 const Users = () => {
-  
   const [modal, setModal] = useState(false);
+
+
   const [deletePopup, setDeletePopup] = useState(false)
   const [deleteId, setDeleteId] = useState('')
-  const toggle = () => setModal(!modal);
+  
+
 
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
@@ -72,9 +77,9 @@ const Users = () => {
 
     setDeletePopup(true)
     setDeleteId(id)
-    console.log("ID", id);
-    // dispatch(deleteUser(id));
+
   };
+
 
   
   const confirmDeleteUser = (id) => {
@@ -82,6 +87,15 @@ const Users = () => {
     dispatch(deleteUser(id,setDeletePopup)); 
 
   };
+
+  const editUserPopup = (id) => {
+
+    dispatch(toggleModal());
+    dispatch(setModalType('edit'))
+    dispatch(setUser(state.user.users.find((u => u._id == id))))
+    
+
+  }
 
   
 
@@ -103,9 +117,9 @@ const Users = () => {
         onCancel={()=> setDeletePopup(false)}
         focusCancelBtn
       >
-        You will not be able to recover this!
+        You will not be able to recover this imaginary file!
       </SweetAlert>}
-      <AddUser modal={modal} toggle={toggle} />
+      <AddUser modal={state.user.isModalOpen} />
       <div className="page-content">
         <Container fluid>
           {/* <Breadcrumbs title="Orders" breadcrumbItems={this.state.breadcrumbItems} /> */}
@@ -123,7 +137,8 @@ const Users = () => {
                         data={users}
                         columns={UserColumns(
                           handleChangeStatus,
-                          handleDeleteUser
+                          handleDeleteUser,
+                          editUserPopup
                         )}
                         bootstrap4
                         search
@@ -146,7 +161,7 @@ const Users = () => {
                                     type="button"
                                     color="success"
                                     className="btn-rounded mb-2 me-2"
-                                    onClick={toggle}
+                                    onClick={() => dispatch(toggleModal())}
                                   >
                                     <i className="mdi mdi-plus me-1" /> Add New
                                     User
