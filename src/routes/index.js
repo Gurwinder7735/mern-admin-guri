@@ -17,6 +17,7 @@ import Dashboard from "../pages/Dashboard/index";
 // import ForgetPwd1 from "../pages/AuthenticationInner/ForgetPassword";
 import AddUser from "../pages/Users/AddUser";
 import Users from "../pages/Users/UserListing";
+import CMS from "../pages/CMS";
 
 
 const authProtectedRoutes = [
@@ -25,6 +26,7 @@ const authProtectedRoutes = [
 	{ path: "/users", component: Users },
 	{ path: "/addUser", component: AddUser },
 	{ path: "/categories", component: Dashboard },
+	{ path: "/cms", component: CMS },
 
 	// this route should be at the end of all other routes
 	{ path: "/", exact: true, component: () => <Redirect to="/dashboard" /> },

@@ -27,6 +27,7 @@ import {
 import AddUser from "../AddUser";
 import Loader from "react-loader-spinner";
 import SweetAlert from "react-bootstrap-sweetalert";
+import Breadcrumbs from '../../../components/Common/Breadcrumb';
 
 const NoDataIndication = () => (
   <>
@@ -93,7 +94,6 @@ const Users = () => {
     dispatch(toggleModal());
     dispatch(setModalType('edit'))
     dispatch(setUser(state.user.users.find((u => u._id == id))))
-    
 
   }
 
@@ -122,7 +122,8 @@ const Users = () => {
       <AddUser modal={state.user.isModalOpen} />
       <div className="page-content">
         <Container fluid>
-          {/* <Breadcrumbs title="Orders" breadcrumbItems={this.state.breadcrumbItems} /> */}
+          <Breadcrumbs title="Orders"/>
+          
           <Row>
             <Col xs="12">
               <Card>

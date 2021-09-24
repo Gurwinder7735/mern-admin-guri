@@ -8,7 +8,7 @@ import { withNamespaces } from "react-i18next";
 class Breadcrumbs extends Component {
     render() {
 
-        const itemsLength = this.props.breadcrumbItems.length;
+        // const itemsLength = this.props.breadcrumbItems.length;
 
         return (
             <React.Fragment>
@@ -17,7 +17,7 @@ class Breadcrumbs extends Component {
                         <div className="page-title-box d-flex align-items-center justify-content-between">
                             <h4 className="mb-0">{this.props.t(this.props.title)}</h4>
 
-                            <div className="page-title-right">
+                            {/* <div className="page-title-right">
                                 <Breadcrumb listClassName="m-0">
                                     {
                                         this.props.breadcrumbItems.map((item, key) =>
@@ -27,7 +27,7 @@ class Breadcrumbs extends Component {
                                         )
                                     }
                                 </Breadcrumb>
-                            </div>
+                            </div> */}
 
                         </div>
                     </Col>
