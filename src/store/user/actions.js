@@ -96,20 +96,21 @@ export const updateUser = (id,data, clearInputs) => {
 
 export const getUsers = () => {
   return (dispatch) => {
-    // dispatch(setLoading(true));
     // dispatch(clearAlerts());
+    dispatch(addUserStart());
+
     axios
       .get("api/users")
       .then((res) => {
         dispatch(setUsers(res.data.body.users));
+        dispatch(addUserSuccess());
         // dispatch(setLoading(false));
 
         console.log("RES", res);
       })
       .catch((err) => {
-        // setLoading(false);
-
-        // dispatch(setError(err.response.data.message));
+        setLoading(false);
+        dispatch(addUserFailed(err.response.data.message));
         console.log(err);
       });
   };

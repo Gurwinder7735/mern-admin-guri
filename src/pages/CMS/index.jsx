@@ -13,15 +13,16 @@ import {
   Container,
   Form,
 } from "reactstrap";
-import { CKEditor } from "ckeditor4-react";
-import { useCKEditor, CKEditorEventAction } from 'ckeditor4-react';
+import Loader from "react-loader-spinner";
+import { CKEditor } from '@ckeditor/ckeditor5-react';
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 import Breadcrumbs from "../../components/Common/Breadcrumb";
 import classnames from "classnames";
 import { useState } from "react";
 import { AvForm } from "availity-reactstrap-validation";
 import { useDispatch, useSelector } from "react-redux";
-import { getCMS } from "../../store/cms/actions";
+import { getCMS, updateCMS } from "../../store/cms/actions";
 
 const CMS = () => {
 
@@ -30,11 +31,12 @@ const CMS = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('data',data);
+    dispatch(updateCMS(activeTab,data))
+    
   };
 
   const dispatch = useDispatch();
-  const state = useSelector(state => state.cms)
+  const state = useSelector(state => state)
   
 
   useEffect(() => {
@@ -98,14 +100,31 @@ const CMS = () => {
                 <AvForm onValidSubmit={handleSubmit}>
                     {console.log(state.content, '===============++>cms')}
                     
-                  <CKEditor
-                    initData={<div  dangerouslySetInnerHTML={{ __html:state.content}} ></div>}
-                    // onChange={({ editor }) => {
-                    //   setdata(editor.getData());
-                    //   // console.log(editor.getData());
-                    // }}
-                  />
-                  <Button type="submit" className="mt-3">Update</Button>
+                    <CKEditor
+                    editor={ ClassicEditor }
+                    data={state.cms.content}
+                    onReady={ editor => {
+                        // You can store the "editor" and use when it is needed.
+                        // console.log( 'Editor is ready to use!', editor );
+                    } }
+                    onChange={ ( event, editor ) => {
+                        const data = editor.getData();
+                        setdata(editor.getData())
+                        // console.log( { event, editor, data } );
+                    } }
+                    onBlur={ ( event, editor ) => {
+                        // console.log( 'Blur.', editor );
+                    } }
+                    onFocus={ ( event, editor ) => {
+                        // console.log( 'Focus.', editor );
+                    } }
+                />
+                  <Button disabled={state.alert.loading} type="submit" className="mt-3">
+                    {
+                      state.alert.loading ? <Loader type="TailSpin" color="#00BFFF" height={20} width={48}/> : 'Update'
+                    }
+
+                        </Button>
                 </AvForm>
               </div>
             </Col>
