@@ -59,7 +59,7 @@ export const addUser = (data, history, clearInputs, toggle) => {
     
         
         console.log("RES", res);
-        dispatch(getUsers());
+        dispatch(getUsers(1,10));
         history.push("users");
       })
       .catch((err) => {
@@ -94,13 +94,13 @@ export const updateUser = (id,data, clearInputs) => {
   };
 };
 
-export const getUsers = () => {
+export const getUsers = (page,perPage, filterText = '') => {
   return (dispatch) => {
     // dispatch(clearAlerts());
     dispatch(addUserStart());
 
     axios
-      .get("api/users")
+      .get(`api/users?page=${page}&perPage=${perPage}&search=${filterText}`)
       .then((res) => {
         dispatch(setUsers(res.data.body.users));
         dispatch(addUserSuccess());
@@ -137,7 +137,7 @@ export const changeUserStatus = (id, status) => {
   };
 };
 
-export const deleteUser = (id, setDeletePopup) => {
+export const deleteUser = (id, setDeletePopup,currentPage, perPage) => {
   return (dispatch) => {
     dispatch(clearAlerts());
     dispatch(setLoading(true));
@@ -147,7 +147,7 @@ export const deleteUser = (id, setDeletePopup) => {
         dispatch(setSuccess(res.data.message));
         console.log("RES", res);
 
-        dispatch(getUsers());
+        dispatch(getUsers(currentPage,perPage));
         setDeletePopup(false);
       })
       .catch((err) => {

@@ -21,8 +21,8 @@ import './App.css'
 
 // axios.defaults.headers.common["Authorization"] = token;
 
-axios.defaults.baseURL = 'https://mern-admin-test.herokuapp.com/';
-// axios.defaults.baseURL = 'http://localhost:5000/';
+// axios.defaults.baseURL = 'https://mern-admin-test.herokuapp.com/';
+axios.defaults.baseURL = 'http://localhost:5000/';
 // test
 // axios.defaults.headers.post["Content-Type"] =
 //     "application/x-www-form-urlencoded";
@@ -76,7 +76,6 @@ class App extends Component {
 		}
 		return layoutCls;
 	};
-
 
 	
 

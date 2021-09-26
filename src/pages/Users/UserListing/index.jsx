@@ -1,21 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Row, Col, Card, CardBody, Button, Label, Container } from "reactstrap";
-// import {
-//   AvForm,
-//   AvField,
-//   AvRadioGroup,
-//   AvRadio,
-// } from "availity-reactstrap-validation";
 import { useDispatch, useSelector } from "react-redux";
-// import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
-// import BootstrapTable from "react-bootstrap-table-next";
-// import paginationFactory, {
-//   PaginationProvider,
-//   PaginationListStandalone,
-// } from "react-bootstrap-table2-paginator";
-// import ToolkitProvider, { Search } from "react-bootstrap-table2-toolkit";
-// import UserColumns from "./UserColumns";
-// import { Link } from "react-router-dom";
 import {
   changeUserStatus,
   deleteUser,
@@ -24,180 +9,6 @@ import {
   setModalType,
   setUser,
 } from "../../../store/user/actions";
-// import AddUser from "../AddUser";
-// import Loader from "react-loader-spinner";
-// import SweetAlert from "react-bootstrap-sweetalert";
-// import Breadcrumbs from '../../../components/Common/Breadcrumb';
-
-// const NoDataIndication = () => (
-//   <>
-//     <div
-//       style={{
-//         display: "flex",
-//         justifyContent: "center",
-//         alignItems: "center",
-//         height: "100vh - 50px",
-//       }}
-//     >
-//       <Loader type="ThreeDots" color="#5664D2" height={100} width={100} />
-//     </div>
-//   </>
-// );
-
-// const Users = () => {
-//   const [modal, setModal] = useState(false);
-
-//   const [deletePopup, setDeletePopup] = useState(false)
-//   const [deleteId, setDeleteId] = useState('')
-
-//   const dispatch = useDispatch();
-//   const state = useSelector((state) => state);
-
-//   const pageOptions = {
-//     sizePerPage: 10,
-//     totalSize: state.user.users.length, // replace later with size(Order),
-//     custom: true,
-//   };
-
-//   const { SearchBar } = Search;
-
-//   const users = state.user.users;
-
-//   const handleChangeStatus = (id, status) => {
-
-//     console.log("ID", id);
-//     console.log("HANDLE CHANGE STATUS", status);
-//     dispatch(changeUserStatus(id, status));
-//   };
-
-//   const handleDeleteUser = (id) => {
-
-//     setDeletePopup(true)
-//     setDeleteId(id)
-
-//   };
-
-//   const confirmDeleteUser = (id) => {
-//     console.log("ID", id);
-//     dispatch(deleteUser(id,setDeletePopup));
-
-//   };
-
-//   const editUserPopup = (id) => {
-
-//     dispatch(toggleModal());
-//     dispatch(setModalType('edit'))
-//     dispatch(setUser(state.user.users.find((u => u._id == id))))
-
-//   }
-
-//   useEffect(() => {
-//     dispatch(getUsers());
-//   }, []);
-
-//   return (
-//     <>
-
-//      {deletePopup && <SweetAlert
-//         warning
-//         showCancel
-//         confirmBtnText={state.alert.loading? <Loader type="ThreeDots" color="#fff" height={10} width={80} />: 'Confirm'}
-//         // confirmBtnText = 'fgug'
-//         confirmBtnBsStyle="danger"
-//         title="Are you sure?"
-//         onConfirm={()=> confirmDeleteUser(deleteId)}
-//         onCancel={()=> setDeletePopup(false)}
-//         focusCancelBtn
-//       >
-//         You will not be able to recover this imaginary file!
-//       </SweetAlert>}
-//       <AddUser modal={state.user.isModalOpen} />
-//       <div className="page-content">
-//         <Container fluid>
-//           <Breadcrumbs title="Orders"/>
-
-//           <Row>
-//             <Col xs="12">
-//               <Card>
-//                 <CardBody>
-//                   <PaginationProvider
-//                     pagination={paginationFactory(pageOptions)}
-//                     data={users}
-//                   >
-//                     {({ paginationProps, paginationTableProps }) => (
-//                       <ToolkitProvider
-//                         keyField="id"
-//                         data={users}
-//                         columns={UserColumns(
-//                           handleChangeStatus,
-//                           handleDeleteUser,
-//                           editUserPopup
-//                         )}
-//                         bootstrap4
-//                         search
-//                       >
-//                         {(toolkitProps) => (
-//                           <React.Fragment>
-//                             <Row className="mb-2">
-//                               <Col sm="4">
-//                                 <div className="search-box me-2 mb-2 d-inline-block">
-//                                   <div className="position-relative">
-//                                     <SearchBar {...toolkitProps.searchProps} />
-//                                     <i className="bx bx-search-alt search-icon" />
-//                                   </div>
-//                                 </div>
-//                               </Col>
-//                               <Col sm="8">
-//                                 <div className="text-sm-end">
-//                                   {/* <Link to="addUser"> */}
-//                                   <Button
-//                                     type="button"
-//                                     color="success"
-//                                     className="btn-rounded mb-2 me-2"
-//                                     onClick={() => dispatch(toggleModal())}
-//                                   >
-//                                     <i className="mdi mdi-plus me-1" /> Add New
-//                                     User
-//                                   </Button>
-//                                   {/* </Link> */}
-//                                 </div>
-//                               </Col>
-//                             </Row>
-//                             <div className="table-responsive">
-//                               <BootstrapTable
-//                                 {...toolkitProps.baseProps}
-//                                 {...paginationTableProps}
-//                                 responsive
-//                                 bordered={false}
-//                                 striped={true}
-//                                 // defaultSorted={defaultSorted}
-//                                 // selectRow={selectRow}
-//                                 classes={
-//                                   "table align-middle table-nowrap table-check"
-//                                 }
-//                                 headerWrapperClasses={"table-light"}
-//                                 noDataIndication={() => <NoDataIndication />}
-//                               />
-//                             </div>
-//                             <div className="pagination pagination-rounded justify-content-end mb-2">
-//                               <PaginationListStandalone {...paginationProps} />
-//                             </div>
-//                           </React.Fragment>
-//                         )}
-//                       </ToolkitProvider>
-//                     )}
-//                   </PaginationProvider>
-//                 </CardBody>
-//               </Card>
-//             </Col>
-//           </Row>
-//         </Container>
-//       </div>
-//     </>
-//   );
-// };
-
-// export default Users;
 
 import DataTable from "react-data-table-component";
 import styled, { keyframes } from "styled-components";
@@ -206,6 +17,8 @@ import AddUser from "../AddUser";
 import SweetAlert from "react-bootstrap-sweetalert";
 import Toggle from "react-toggle";
 import { Link } from "react-router-dom";
+import Breadcrumbs from "../../../components/Common/Breadcrumb";
+import axios from "axios";
 
 const rotate360 = keyframes`
   from {
@@ -254,48 +67,33 @@ const TextField = styled.input`
   }
 `;
 
-const ClearButton = styled(Button)`
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
-  height: 34px;
-  width: 32px;
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-
-const FilterComponent = ({ filterText, onFilter, onClear,dispatch }) => (
-  
-  <div style={{width: '100%'}}>
-  <Row style={{display: 'flex',justifyContent:'space-between'}}>
-  <Col style={{display: 'flex',justifyContent:'flex-start'}}>
-    <TextField
-      id="search"
-      type="text"
-      placeholder="Search"
-      aria-label="Search Input"
-      value={filterText}
-      onChange={onFilter}
-    />
-    </Col>
-    <Col style={{display: 'flex',justifyContent:'flex-end'}}>
-      <div className="text-sm-end">
-        {/* <Link to="addUser"> */}
-        <Button
-          type="button"
-          color="success"
-          className="btn-rounded mb-2 me-2"
-          onClick={() => dispatch(toggleModal())}
-        >
-          <i className="mdi mdi-plus me-1" /> Add New User
-        </Button>
-        {/* </Link> */}
-      </div>
-    </Col>
- 
+const FilterComponent = ({ filterText, onFilter, onClear, dispatch }) => (
+  <div style={{ width: "100%" }}>
+    <Row style={{ display: "flex", justifyContent: "space-between" }}>
+      <Col style={{ display: "flex", justifyContent: "flex-start" }}>
+        <TextField
+          id="search"
+          type="text"
+          placeholder="Search"
+          aria-label="Search Input"
+          value={filterText}
+          onChange={onFilter}
+        />
+      </Col>
+      <Col style={{ display: "flex", justifyContent: "flex-end" }}>
+        <div className="text-sm-end">
+          {/* <Link to="addUser"> */}
+          <Button
+            type="button"
+            color="success"
+            className="btn-rounded mb-2 me-2"
+            onClick={() => dispatch(toggleModal())}
+          >
+            <i className="mdi mdi-plus me-1" /> Add New User
+          </Button>
+          {/* </Link> */}
+        </div>
+      </Col>
     </Row>
   </div>
 );
@@ -309,6 +107,7 @@ const Users = () => {
     {
       name: "Name",
       selector: "name",
+      sortable: true,
     },
     {
       name: "Age",
@@ -383,32 +182,19 @@ const Users = () => {
     setDeleteId(id);
   };
 
-  const confirmDeleteUser = (id) => {
-    console.log("ID", id);
-    dispatch(deleteUser(id, setDeletePopup));
-  };
-
+ 
   const editUserPopup = (id) => {
     dispatch(toggleModal());
     dispatch(setModalType("edit"));
-    dispatch(setUser(state.user.users.find((u) => u._id == id)));
+    dispatch(setUser(state.user.users.docs.find((u) => u._id == id)));
   };
 
-  useEffect(() => {
-    dispatch(getUsers());
-  }, []);
-
-  const [filterText, setFilterText] = React.useState("");
-  const [resetPaginationToggle, setResetPaginationToggle] =
-    React.useState(false);
-
-  const filteredItems = state.user.users.filter(
-    (item) =>
-      item.name && item.name.toLowerCase().includes(filterText.toLowerCase())
-  );
+  const [filterText, setFilterText] = useState("");
+  const [resetPaginationToggle, setResetPaginationToggle] = useState(false);
+  const [currentPage, setcurrentPage] = useState();
+  const [perPage, setPerPage] = useState(10);
 
   const subHeaderComponentMemo = React.useMemo(() => {
-
     const handleClear = () => {
       if (filterText) {
         setResetPaginationToggle(!resetPaginationToggle);
@@ -421,10 +207,44 @@ const Users = () => {
         onFilter={(e) => setFilterText(e.target.value)}
         onClear={handleClear}
         filterText={filterText}
-        dispatch = {dispatch}
+        dispatch={dispatch}
       />
     );
   }, [filterText, resetPaginationToggle]);
+
+  // const [totalRows, setTotalRows] = useState(0);
+
+
+  const confirmDeleteUser = (id) => {
+    console.log("ID", id);
+    dispatch(deleteUser(id, setDeletePopup, currentPage,perPage));
+  };
+
+
+  useEffect(() => {
+    dispatch(getUsers(1, perPage));
+  }, []);
+
+  useEffect(() => {
+    if (filterText) {
+      dispatch(getUsers(1, perPage, filterText));
+    } else {
+      // alert(currentPage);
+      dispatch(getUsers(1, perPage));
+    }
+  }, [filterText]);
+
+  const handlePageChange = (page) => {
+    // alert('page',page)
+    setcurrentPage(page);
+    dispatch(getUsers(page, perPage));
+  };
+
+  const handlePerRowsChange = async (newPerPage, page) => {
+    // setLoading(true);
+    // console.log('newPerPage',newPerPage,page);
+    dispatch(getUsers(page, newPerPage));
+  };
 
   return (
     <>
@@ -454,16 +274,21 @@ const Users = () => {
         <Container fluid>
           <Row>
             <Col xs={12}>
+              <Breadcrumbs title="Users" />
               <DataTable
                 columns={columns}
-                data={filteredItems}
+                data={state.user.users.docs}
+                // data={filteredItems}
                 pagination
                 paginationResetDefaultPage={resetPaginationToggle} // optionally, a hook to reset pagination to page 1
                 subHeader
                 subHeaderComponent={subHeaderComponentMemo}
-                // persistTableHead
                 progressPending={state.user.loading}
                 progressComponent={<CustomLoader />}
+                paginationServer
+                paginationTotalRows={state.user.users.totalDocs}
+                onChangeRowsPerPage={handlePerRowsChange}
+                onChangePage={handlePageChange}
               />
             </Col>
           </Row>
