@@ -60,7 +60,7 @@ export const addUser = (data, history, clearInputs, toggle) => {
         
         console.log("RES", res);
         dispatch(getUsers(1,10));
-        history.push("users");
+        // history.push("users");
       })
       .catch((err) => {
         dispatch(addUserFailed(err.response.data.message));

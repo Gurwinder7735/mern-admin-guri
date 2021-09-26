@@ -101,7 +101,7 @@ const FilterComponent = ({ filterText, onFilter, onClear, dispatch }) => (
 const Users = () => {
   const columns = [
     {
-      name: "#",
+      name: "id",
       selector: (row, id) => id + 1,
     },
     {
