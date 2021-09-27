@@ -21,8 +21,11 @@ import './App.css'
 
 // axios.defaults.headers.common["Authorization"] = token;
 
-axios.defaults.baseURL = 'https://mern-admin-test.herokuapp.com/';
-// axios.defaults.baseURL = 'http://localhost:5000/';
+// axios.defaults.baseURL = 'https://mern-admin-test.herokuapp.com/';
+axios.defaults.baseURL = 'https://tiny-wolverine-60.loca.lthttps://tiny-wolverine-60.loca.lt/';
+
+
+axios.defaults.baseURL = 'http://localhost:5000/';
 // test
 // axios.defaults.headers.post["Content-Type"] =
 //     "application/x-www-form-urlencoded";
