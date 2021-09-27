@@ -21,8 +21,8 @@ import './App.css'
 
 // axios.defaults.headers.common["Authorization"] = token;
 
-// axios.defaults.baseURL = 'https://mern-admin-test.herokuapp.com/';
-axios.defaults.baseURL = 'https://young-parrot-86.loca.lt/';
+axios.defaults.baseURL = 'https://mern-admin-backend.herokuapp.com/';
+// axios.defaults.baseURL = 'https://big-grasshopper-91.loca.lt/';
 
 
 // axios.defaults.baseURL = 'http://localhost:5000/';
