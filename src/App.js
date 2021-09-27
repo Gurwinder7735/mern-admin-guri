@@ -21,11 +21,17 @@ import './App.css'
 
 // axios.defaults.headers.common["Authorization"] = token;
 
-axios.defaults.baseURL = 'https://mern-admin-backend.herokuapp.com/';
+
 // axios.defaults.baseURL = 'https://big-grasshopper-91.loca.lt/';
 
+// alert(process.env.NODE_ENV)
 
-// axios.defaults.baseURL = 'http://localhost:5000/';
+if(process.env.NODE_ENV == 'development'){
+	axios.defaults.baseURL = 'http://localhost:5000/';
+}else{ 
+    axios.defaults.baseURL = 'https://mern-admin-backend.herokuapp.com/';
+}
+
 // test
 // axios.defaults.headers.post["Content-Type"] =
 //     "application/x-www-form-urlencoded";

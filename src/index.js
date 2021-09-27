@@ -10,7 +10,7 @@ import store from './store';
 // axios.defaults.baseURL = 'https://mern-admin-test.herokuapp.com/';
 
 // export const URL = 'http://localhost:5000/Uploads/'
-export const URL = 'https://mern-admin-test.herokuapp.com/Uploads/'
+export const URL = 'https://mern-admin-backend.herokuapp.com/Uploads/'
 
 const app = (
     <Provider store={store}>
