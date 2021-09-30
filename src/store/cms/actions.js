@@ -1,5 +1,5 @@
 import axios from "axios";
-import { setError, setLoading, setSuccess } from "../alerts/actions";
+import { setError, setLoading, setSuccess,clearAlerts } from "../alerts/actions";
 import * as actionType from "./actionTypes";
 
 const setCMS = (data) => ({
@@ -10,13 +10,14 @@ const setCMS = (data) => ({
 export const getCMS = (type) => {
 
   return (dispatch) => {
+    dispatch(clearAlerts())
     axios
       .get(`api/cms/${type}`)
       .then((res) => {
         dispatch(setCMS(res.data.body.content));
       })
       .catch((err) => {
-        //   dispatch(addUserFailed(err.response.data.message));
+          dispatch(setError(err.response.data.message));
         console.log(err);
       });
   };

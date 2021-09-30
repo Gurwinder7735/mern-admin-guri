@@ -84,7 +84,7 @@ export const updateUser = (id,data, clearInputs) => {
     
         
         console.log("RES", res);
-        dispatch(getUsers());
+        dispatch(getUsers(1,10));
         // history.push("users");
       })
       .catch((err) => {

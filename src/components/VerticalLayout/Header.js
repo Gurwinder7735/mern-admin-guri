@@ -111,7 +111,7 @@ class Header extends Component {
 
                                 <Link to="#" className="logo logo-light">
                                     <span className="logo-sm">
-                                        <img src={logosmlight} alt="" height="52" />
+                                        {/* <img src={logosmlight} alt="" height="52" /> */}
                                     </span>
                                     <span className="logo-lg">
                                         <img src={logolight} alt="" height="70" />
