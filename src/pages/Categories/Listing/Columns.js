@@ -1,42 +1,32 @@
 import React from "react"
 import { Link } from "react-router-dom"
 import Toggle from 'react-toggle'
-import {URL} from "../../../index"
+import { URL } from "../../.."
 import IMG from '../../../assets/images/placeholder.png'
 
-const UserColumns = (handleChangeStatus,handleDeleteUser,editUserPopup) => {
-
+const Columns = (handleChangeStatus,handleDelete,editPopup) => {
+  
   return [
     {
       name: "#",
       selector: "sr_no",
     },
-    {
+    { 
       name: "Image",
+      selector: "image",
+      sortable: true,
       selector: (row) => {
         return (
-        <>
-        <img height="100px" style={{objectFit: 'contain',padding: '10px'}} src={URL + 'Users/'+ row.image} alt={IMG}></img>
-        </>
+          <>
+             <img height="90px" style={{objectFit: 'contain',padding: '10px'}} src={URL+ 'Category/' + row.image} alt={IMG}></img>
+          </>
         )
-      },
+      }
     },
     { 
       name: "Name",
       selector: "name",
       sortable: true,
-    },
-    {
-      name: "Age",
-      selector: (row) => row.age,
-    },
-    {
-      name: "Email",
-      selector: (row) => row.email,
-    },
-    {
-      name: "Gender",
-      selector: (row) => row.gender,
     },
     {
       name: "Status",
@@ -61,13 +51,13 @@ const UserColumns = (handleChangeStatus,handleDeleteUser,editUserPopup) => {
         return (
           <>
             <Link
-              onClick={() => editUserPopup(row._id)}
+              onClick={() => editPopup(row._id)}
               className="me-3 text-primary"
             >
               <i className="mdi mdi-pencil font-size-18"></i>
             </Link>
             <Link
-              onClick={() => handleDeleteUser(row._id)}
+              onClick={() => handleDelete(row._id)}
               className="text-danger"
             >
               <i className="mdi mdi-trash-can font-size-18"></i>
@@ -80,4 +70,4 @@ const UserColumns = (handleChangeStatus,handleDeleteUser,editUserPopup) => {
   
 }
 
-export default UserColumns
+export default Columns

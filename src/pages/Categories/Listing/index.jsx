@@ -12,17 +12,19 @@ import {
 
 import DataTable from "react-data-table-component";
 
-import AddUser from "../AddUser";
+import AddCategory from "../AddCategory";
 import Breadcrumbs from "../../../components/Common/Breadcrumb";
 import FilterComponent from "../../../components/DataTables/FilterComponent";
 import CustomLoader from "../../../components/DataTables/CustomLoader";
-import UserColumns from "./UserColumns";
+import Columns from "./Columns";
 import ConfirmDelete from "../../../components/DataTables/ConfirmDelete";
+import { getCategories, setCategory } from "../../../store/category/actions";
+import { changeStatus, deleteEntry } from "../../../store/common/actions";
 
 
 
 
-const Users = () => {
+const Category = () => {
 
 
   const dispatch = useDispatch();
@@ -36,38 +38,40 @@ const Users = () => {
 
 
   // PAGINATION
-  const handlePageChange = (page) => {
-    setcurrentPage(page);
-    dispatch(getUsers(page, perPage));
-  };
+//   const handlePageChange = (page) => {
+//     setcurrentPage(page);
+//     dispatch(getUsers(page, perPage));
+//   };
 
-  const handlePerRowsChange = async (newPerPage, page) => {
-    dispatch(getUsers(page, newPerPage));
-  };
+//   const handlePerRowsChange = async (newPerPage, page) => {
+//     dispatch(getUsers(page, newPerPage));
+//   };
 
 
 
   const handleChangeStatus = (id, status) => {
     console.log("ID", id);
     console.log("HANDLE CHANGE STATUS", status);
-    dispatch(changeUserStatus(id, status));
+    dispatch(changeStatus(id, status,'category'));
   };
 
    
-  const editUserPopup = (id) => {
+  const editPopup = (id) => {
     dispatch(toggleModal());
     dispatch(setModalType("edit"));
-    dispatch(setUser(state.user.users.docs.find((u) => u._id == id)));
+    dispatch(setCategory(state.category.categories.find((u) => u._id == id)));
   };
 
 
-  const handleDeleteUser = (id) => {
+  const handleDelete = (id) => {
+
     setDeletePopup(true);
     setDeleteId(id);
+
   };
 
   const confirmDelete = () => {
-    dispatch(deleteUser(deleteId, setDeletePopup, currentPage,perPage));
+    dispatch(deleteEntry(deleteId, setDeletePopup, 'category'));
   };
 
 
@@ -79,7 +83,7 @@ const Users = () => {
         onFilter={(e) => setFilterText(e.target.value)}
         filterText={filterText}
         dispatch={dispatch}
-        title="Add User"
+        title="Add Category"
       />
     );
   }, [filterText]);
@@ -87,14 +91,15 @@ const Users = () => {
 
   useEffect(() => {
 
-    if (filterText) {
-      dispatch(getUsers(1, perPage, filterText));
-    } else {
-      // alert(currentPage);
-      dispatch(getUsers(1, perPage));
-    }
+    // if (filterText) {
+    //   dispatch(getUsers(1, perPage, filterText));
+    // } else {
+    //   // alert(currentPage);
+    //   dispatch(getUsers(1, perPage));
+    // }
+    dispatch(getCategories())
 
-  }, [filterText]);
+  }, []);
 
  
   return (
@@ -102,24 +107,24 @@ const Users = () => {
       {deletePopup && (
         <ConfirmDelete loading={state.alert.loading} confirmDelete={confirmDelete} setDeletePopup={setDeletePopup}/>
       )}
-      <AddUser modal={state.user.isModalOpen} />
+      <AddCategory modal={state.user.isModalOpen} />
       <div className="page-content">
         <Container fluid>
           <Row>
             <Col xs={12}>
-              <Breadcrumbs title="Users" />
+              <Breadcrumbs title="Categories" />
               <DataTable
-                columns={UserColumns(handleChangeStatus,handleDeleteUser,editUserPopup)}
-                data={state.user.users.docs}
+                columns={Columns(handleChangeStatus,handleDelete,editPopup)}
+                data={state.category.categories}
                 pagination
                 subHeader
                 subHeaderComponent={subHeaderComponentMemo}
                 progressPending={state.alert.loading}
                 progressComponent={<CustomLoader />}
-                paginationServer
-                paginationTotalRows={state.user.users.totalDocs}
-                onChangeRowsPerPage={handlePerRowsChange}
-                onChangePage={handlePageChange}
+                // paginationServer
+                paginationTotalRows={state.category.categories.length}
+                // onChangeRowsPerPage={handlePerRowsChange}
+                // onChangePage={handlePageChange}
               />
             </Col>
           </Row>
@@ -129,4 +134,4 @@ const Users = () => {
   );
 };
 
-export default Users;
+export default Category;

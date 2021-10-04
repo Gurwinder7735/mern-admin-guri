@@ -47,20 +47,17 @@ export const toggleModal = () => ({
 export const addUser = (data, history, clearInputs, toggle) => {
   console.log(data);
   return (dispatch) => {
-    dispatch(clearAlerts());
+   
     dispatch(addUserStart());
 
     axios
       .post("api/user", data)
       .then((res) => {
         dispatch(addUserSuccess(res.data.message));
-        clearInputs()
+        dispatch(setLoading(false));
         dispatch(toggleModal());
-    
-        
-        console.log("RES", res);
         dispatch(getUsers(1,10));
-        // history.push("users");
+        dispatch(setSuccess(res.data.message));
       })
       .catch((err) => {
         dispatch(addUserFailed(err.response.data.message));
@@ -72,19 +69,20 @@ export const addUser = (data, history, clearInputs, toggle) => {
 export const updateUser = (id,data, clearInputs) => {
   console.log(data);
   return (dispatch) => {
-    dispatch(clearAlerts());
+
     dispatch(addUserStart());
 
     axios
       .patch(`api/user/${id}`, data)
       .then((res) => {
-        dispatch(addUserSuccess(res.data.message));
+        dispatch(addUserSuccess());
         clearInputs()
         dispatch(toggleModal());
-    
+          // dispatch(setSuccess(res.data.message))
         
         console.log("RES", res);
         dispatch(getUsers(1,10));
+        dispatch(setSuccess(res.data.message));
         // history.push("users");
       })
       .catch((err) => {
@@ -96,21 +94,20 @@ export const updateUser = (id,data, clearInputs) => {
 
 export const getUsers = (page,perPage, filterText = '') => {
   return (dispatch) => {
-    // dispatch(clearAlerts());
-    dispatch(addUserStart());
+
+    dispatch(setLoading(true));
 
     axios
       .get(`api/users?page=${page}&perPage=${perPage}&search=${filterText}`)
       .then((res) => {
+        
         dispatch(setUsers(res.data.body.users));
-        dispatch(addUserSuccess());
-        // dispatch(setLoading(false));
-
+        dispatch(setLoading(false));
         console.log("RES", res);
       })
       .catch((err) => {
-        setLoading(false);
-        dispatch(addUserFailed(err.response.data.message));
+        dispatch(setLoading(false));
+        dispatch(setError(err.response.data.message));
         console.log(err);
       });
   };

@@ -18,6 +18,10 @@ import Dashboard from "../pages/Dashboard/index";
 import AddUser from "../pages/Users/AddUser";
 import Users from "../pages/Users/UserListing";
 import CMS from "../pages/CMS";
+import Category from "../pages/Categories/Listing";
+import SubCategory from "../pages/SubCategories/Listing";
+import Product from "../pages/Products/Listing";
+import AddProduct from "../pages/Products/AddProduct";
 
 
 const authProtectedRoutes = [
@@ -25,7 +29,10 @@ const authProtectedRoutes = [
 	{ path: "/dashboard", component: Dashboard },
 	{ path: "/users", component: Users },
 	{ path: "/addUser", component: AddUser },
-	{ path: "/categories", component: Dashboard },
+	{ path: "/categories", component: Category },
+	{ path: "/subCategories", component: SubCategory },
+	{ path: "/addProduct", exact: true,component: AddProduct },
+	{ path: "/products", exact: true, component: Product },
 	{ path: "/cms", component: CMS },
 
 	// this route should be at the end of all other routes

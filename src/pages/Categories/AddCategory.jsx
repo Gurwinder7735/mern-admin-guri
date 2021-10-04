@@ -22,11 +22,12 @@ import { useDispatch, useSelector } from "react-redux";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import Loader from "react-loader-spinner";
 import { useHistory } from "react-router";
+import { addCategory,updateCategory } from "../../store/category/actions";
 
-const AddUser = ({ modal, modalType }) => {
+const AddCategory = ({ modal, modalType }) => {
 
   const dispatch = useDispatch();
-  const state = useSelector((state) => state.user);
+  const state = useSelector((state) => state.category);
   let history = useHistory();
   
   // let user = 
@@ -34,20 +35,15 @@ const AddUser = ({ modal, modalType }) => {
 
   const [data, setData] = useState({
     name: "",
-    email: "",
-    age: "",
-    gender: "",
     image: "",
   });
 
   useEffect(() => {
     setData({
-      name: state.user.name,
-      email: state.user.email,
-      age: state.user.age,
-      gender: state.user.gender
+      name: state.category.name,
+      image: state.category.image,
     })
-  }, [state.user])
+  }, [state.category])
 
  
   const handleChange = (e) => {
@@ -75,35 +71,26 @@ const AddUser = ({ modal, modalType }) => {
   const handleSubmit = () => {
     let formData = new FormData();
     formData.append("name", data.name);
-    formData.append("email", data.email);
-    formData.append("gender", data.gender);
-    formData.append("age", data.age);
     formData.append("image", data.image);
-    dispatch(addUser(formData, history, clearInputs));
+    dispatch(addCategory(formData, clearInputs));
   };
 
   const handleUpdate = () => {
 
     let formData = new FormData();
-    console.log(state.user._id);
+    // console.log(state.user._id);
     // alert(state.user.user_id)
     formData.append("name", data.name);
-    formData.append("email", data.email);
-    formData.append("gender", data.gender);
-    formData.append("age", data.age);
     if(data.image){
       formData.append("image", data.image);
     }
-    dispatch(updateUser(state.user._id,formData, clearInputs));
+    dispatch(updateCategory(state.category._id,formData, clearInputs));
     
   }
 
   const clearInputs = () => {
     setData({
       name: "",
-      email: "",
-      gender: "",
-      age: "",
       image: "",
     });
   };
@@ -111,14 +98,14 @@ const AddUser = ({ modal, modalType }) => {
   return (
     <div>
       <Modal isOpen={state.isModalOpen} scrollable={true}>
-        <ModalHeader toggle={()=> dispatch(toggleModal())}>Add User</ModalHeader>
+        <ModalHeader toggle={()=> dispatch(toggleModal())}>Add Category</ModalHeader>
         <ModalBody>
           <div className="pae-content">
             <Row>
               <Col md={{ size: 12 }}>
                 <AvForm
                   className="needs-validation"
-                  onValidSubmit={state.modalType != 'edit'? ()=> handleSubmit() :()=> handleUpdate()}              
+                  onValidSubmit={state.modalType != 'edit'? handleSubmit : handleUpdate}              
                 > 
                   
                   <Row>
@@ -150,6 +137,10 @@ const AddUser = ({ modal, modalType }) => {
                       </div>
                     </Col>
                   </Row>
+           
+
+
+          
                   <Row>
                     <Col>
                       <div className="mb-3">
@@ -157,82 +148,7 @@ const AddUser = ({ modal, modalType }) => {
                           className="form-label"
                           htmlFor="validationCustom02"
                         >
-                          Email
-                        </Label>
-                        <AvField
-                          name="email"
-                          placeholder="Email"
-                          type="text"
-                          errorMessage="Enter Email"
-                          className="form-control"
-                          validate={{ required: { value: true }, email: true }}
-                          id="validationCustom02"
-                          value={data.email}
-                          onChange={handleChange}
-                        />
-                      </div>
-                    </Col>
-                  </Row>
-
-                  <Row>
-                    <Col>
-                      <div className="mb-3">
-                        <Label
-                          className="form-label"
-                          htmlFor="validationCustom02"
-                        >
-                          Age
-                        </Label>
-                        <AvField
-                          name="age"
-                          placeholder="Age"
-                          errorMessage="Enter Age"
-                          type="number"
-                          className="form-control"
-                          validate={{
-                            required: { value: true, email: true },
-                          }}
-                          id="validationCustom02"
-                          value={data.age}
-                          onChange={handleChange}
-                        />
-                      </div>
-                    </Col>
-                  </Row>
-
-                  <Row>
-                    <Col>
-                      <div className="mb-3">
-                        <Label
-                          className="form-label"
-                          htmlFor="validationCustom04"
-                        >
-                          Select Gender
-                        </Label>
-                        <AvRadioGroup
-                          inline
-                          name="gender"
-                          // label="Gender"
-                          required
-                          errorMessage="Please Select Gender"
-                          value={data.gender}
-                          onChange={handleChange}
-                        >
-                          <AvRadio label="Male" value="M" />
-                          <AvRadio label="Female" value="F" />
-                        </AvRadioGroup>
-                      </div>
-                    </Col>
-                  </Row>
-
-                  <Row>
-                    <Col>
-                      <div className="mb-3">
-                        <Label
-                          className="form-label"
-                          htmlFor="validationCustom02"
-                        >
-                          Profile Image
+                          Image
                         </Label>
                         <AvField
                           name="image"
@@ -285,4 +201,4 @@ const AddUser = ({ modal, modalType }) => {
   );
 };
 
-export default AddUser;
+export default AddCategory;

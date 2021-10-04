@@ -99,6 +99,38 @@ class SidebarContent extends Component {
             </li>
 
             <li>
+              <Link to="/categories" className="waves-effect">
+                <i className="ri-dashboard-line"></i>
+                <span className="badge rounded-pill bg-success float-end"></span>
+                <span className="ms-1">{this.props.t("Categories")}</span>
+              </Link>
+            </li>
+
+            <li>
+              <Link to="/subCategories" className="waves-effect">
+                <i className="ri-dashboard-line"></i>
+                <span className="badge rounded-pill bg-success float-end"></span>
+                <span className="ms-1">{this.props.t("Sub Categories")}</span>
+              </Link>
+            </li>
+
+            <li>
+              <Link to="/#" className="has-arrow waves-effect">
+                <i className="ri-store-2-line"></i>
+                <span className="ms-1">{this.props.t("Products")}</span>
+              </Link>
+              <ul className="sub-menu">
+                <li>
+                  <Link to="/addProduct">{this.props.t("Add")}</Link>
+                </li>
+                <li>
+                  <Link to="/products">{this.props.t("Listing")}</Link>
+                </li>
+              </ul>
+            </li>
+            <li className="menu-title">{this.props.t("CMS")}</li>
+
+            <li>
               <Link to="/cms" className="waves-effect">
                 <i className="ri-dashboard-line"></i>
                 <span className="badge rounded-pill bg-success float-end"></span>
@@ -106,20 +138,7 @@ class SidebarContent extends Component {
               </Link>
             </li>
 
-            {/* <li>
-              <Link to="/#" className="has-arrow waves-effect">
-                <i className="ri-store-2-line"></i>
-                <span className="ms-1">{this.props.t("Users")}</span>
-              </Link>
-              <ul className="sub-menu">
-                <li>
-                  <Link to="/addUser">{this.props.t("Add")}</Link>
-                </li>
-                <li>
-                  <Link to="/users">{this.props.t("Listing")}</Link>
-                </li>
-              </ul>
-            </li> */}
+        
           </ul>
         </div>
       </React.Fragment>

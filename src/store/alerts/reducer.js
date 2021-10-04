@@ -14,8 +14,8 @@ export const alertsReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: action.payload,
-        error: '',
-        success: ''
+        // error: '',
+        // success: ''
       };
 
     case actionType.SUCCESS:

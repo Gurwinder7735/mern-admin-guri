@@ -13,17 +13,24 @@ const Dashboard = () => {
     {
       icon: "ri-stack-line",
       title: "Total Users",
-      value: state.users.length,
+      value: "10",
       rate: "",
       // desc: "From previous period",
     },
-    // {
-    //   icon: "ri-store-2-line",
-    //   title: "Categories",
-    //   value: "52",
-    //   rate: "",
-    //   // desc: "From previous period",
-    // },
+    {
+      icon: "ri-store-2-line",
+      title: "Categories",
+      value: "52",
+      rate: "",
+      // desc: "From previous period",
+    },
+    {
+      icon: "ri-store-2-line",
+      title: "Products",
+      value: "52",
+      rate: "",
+      // desc: "From previous period",
+    },
  
   ];
 
