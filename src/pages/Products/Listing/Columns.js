@@ -19,7 +19,7 @@ const Columns = (handleChangeStatus,handleDelete,editPopup) => {
       selector: (row) => {
         return (
           <>
-             <img height="90px" style={{objectFit: 'contain',padding: '10px'}} src={URL+ 'Products/' + row.images[0]} alt={IMG}></img>
+             <img height="90px" style={{objectFit: 'contain',padding: '10px'}} src={IMG} alt={IMG}></img>
           </>
         )
       }

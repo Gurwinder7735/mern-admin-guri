@@ -16,7 +16,7 @@ const UserColumns = (handleChangeStatus,handleDeleteUser,editUserPopup) => {
       selector: (row) => {
         return (
         <>
-        <img height="100px" style={{objectFit: 'contain',padding: '10px'}} src={URL + 'Users/'+ row.image} alt={IMG}></img>
+        <img height="100px" style={{objectFit: 'contain',padding: '10px'}} src={IMG} alt={IMG}></img>
         </>
         )
       },
